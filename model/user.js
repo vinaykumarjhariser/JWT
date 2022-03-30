@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 
-mongoose.connect('mongodb://localhost:27017/user', {
+mongoose.connect('mongodb://localhost:27017/JWT', {
 
     useNewUrlParser: true,
     useUnifiedTopology:true,
@@ -13,7 +13,7 @@ mongoose.connect('mongodb://localhost:27017/user', {
 
 
 //Schema
-const UserSchema = new mongoose.Schema({
+const JWTSchema = new mongoose.Schema({
     _id:mongoose.Schema.Types.ObjectId,
     username: {
         type: String,
@@ -38,16 +38,11 @@ const UserSchema = new mongoose.Schema({
         required:true
         
     },
-    otp:{
-        type:String,
-        required:true
-    },
-
     date:{
         type:Date,
         default:Date.now
     }
 });
 //Model
-const userApi = mongoose.model('user', UserSchema);
-module.exports =userApi
+const JWT = mongoose.model('JWT', JWTSchema);
+module.exports =JWT
